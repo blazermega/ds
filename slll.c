@@ -1,4 +1,4 @@
-#include<stdio.h
+#include<stdio.h>
 #include<stdlib.h>
 struct node {
     int data;
@@ -27,6 +27,7 @@ int main() {
         printf("6.Delete node at a position\n");
         printf("7.Display all the nodes\n");
         printf("8.Exit\n");
+        scanf("%d",&op);
         switch (op) {
             case 1:
                 ins_f();
@@ -115,4 +116,68 @@ void ins_n() {
     nn -> next = t->next->next;
     t->next = nn;
 }
+void del_f() {
+    if (head == NULL) {
+        printf("The list is empty\n");
+        return;
+    }
+    node* t = head;
+    head = head ->next;
+    free(head);
+}
+void del_l() {
+    if (head == NULL) {
+        printf("The list is empty\n");
+    }
+    node* t = head;
+    while (t->next->next != NULL) {
+        t = t->next;
+    }
+    free(t->next);
+    t->next = NULL;
+}
+void del_n() {
+    int pos;
+    printf("Enter the position\n");
+    scanf("%d",&pos);
+    if (head == NULL) {
+        printf("The list is empty\n");
+        return;
+    }
+    if (pos<0) {
+        printf("Invalid index\n");
+    }
+    node* t = head;
+    for (int  i = 0; i < pos-1; i++) {
+        if (t == NULL) {
+            printf("Invalid index\n");
+            return;
+        }
+        t = t->next;
+    }
+    node* temp = t->next;
+    t->next = t->next->next;
+    free(temp);
+}
+void display() {
+    if (head == NULL) {
+        printf("The list is empty\n");
+        return;
+    }
+    node* t = head;
+    while (t!=NULL) {
+        printf("%d",t->data);
+    }
+    if (t->next != NULL) {
+        printf("->");
+    }
+}
+void terminate() {
+    node* t = head;
+    while (t!=NULL) {
+        node* temp = t;
+        t = t->next;
+        free(temp);
+    }
 
+}
