@@ -73,4 +73,46 @@ void ins_f() {
         head = nn;
     }
 }
+void ins_l() {
+    int ele;
+    printf("Enter the element to be inserted\n");
+    scanf("%d",&ele);
+    node* nn = malloc(sizeof(node));
+    nn->data = ele;
+    nn->next = NULL;
+    if (head == NULL) {
+        head = nn;
+        return;
+    }
+    node* t =head;
+    while (t->next != NULL) {
+        t = t->next;
+    }
+    t->next = nn;
+}
+void ins_n() {
+    int ele;
+    printf("Enter the element to be inserted\n");
+    scanf("%d",&ele);
+    int pos;
+    printf("Enter the position\n");
+    scanf("%d",&pos);
+    node* nn = malloc(sizeof(node));
+    nn->data = ele;
+    nn->next = NULL;
+   if (pos<0) {
+       printf("Invalid index\n");
+       return;
+   }
+    node* t =head;
+    for (int  i = 0; i < pos-1; i++) {
+        if (t == NULL) {
+            printf("Invalid index\n");
+            return;
+        }
+        t = t->next;
+    }
+    nn -> next = t->next->next;
+    t->next = nn;
+}
 
