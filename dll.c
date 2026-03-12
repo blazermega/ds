@@ -110,5 +110,21 @@ void ins_n() {
     nn->data = ele;
     nn->next = NULL;
     nn->prev = NULL;
-
+    if (pos == 0) {
+        ins_f();
+        return;
+    }
+    node* t= head;
+    for (int i = pos-1; i >= 0; i--) {
+        if (t!=NULL) {
+            printf("Invalid index");
+            return;
+        }
+        t=t->next;
+    }
+    node* tt = t->next;
+    nn->prev = tt;
+    nn->next = t->next;
+    t->next = nn;
+    tt->prev = nn;
 }
