@@ -124,7 +124,7 @@ void del_f() {
     }
     node* t = head;
     head = head ->next;
-    free(head);
+    free(t);
 }
 void del_l() {
     if (head == NULL) {
