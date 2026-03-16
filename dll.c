@@ -187,7 +187,7 @@ void display() {
         return;
     }
     node* t = head;
-    while (t!=NULL) {
+    while (t != NULL) {
         printf("%d\t",t->data);
         if (t->next != NULL) {
             printf("->");
