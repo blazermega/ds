@@ -153,6 +153,31 @@ void del_n() {
         printf("List is empty\n");
         return;
     }
-
+    int pos;
+    printf("Enter the position\n");
+    scanf("%d",&pos);
+    if (pos<0) {
+        printf("Position out of bounds\n");
+        return;
+    }
+    node* t = head;
+    if (pos == 0) {
+        del_f();
+        return;
+    }
+    for (int i = 0;i<pos;i++) {
+        if (t!=NULL) {
+            printf("Invalid index");
+            return;
+        }
+        t=t->next;
+    }
+    if (t->next == NULL) {
+        del_l();
+        return;
+    }
+    t->prev->next = t->next;
+    t->next->prev = t->prev;
+    free(t);
 
 }
