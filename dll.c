@@ -179,5 +179,28 @@ void del_n() {
     t->prev->next = t->next;
     t->next->prev = t->prev;
     free(t);
+}
 
+void display() {
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+    node* t = head;
+    while (t!=NULL) {
+        printf("%d\t",t->data);
+        if (t->next != NULL) {
+            printf("->");
+        }
+        t = t->next;
+    }
+}
+
+void terminate() {
+    node* t = head;
+    while (t!=NULL) {
+        node* temp = t;
+        t = t->next;
+        free(temp);
+    }
 }
