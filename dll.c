@@ -111,22 +111,29 @@ void ins_n() {
     nn->next = NULL;
     nn->prev = NULL;
     if (pos == 0) {
-        ins_f();
-        return;
+        if (head == NULL) {
+            head = nn;
+            tail = head;
+        }
+        else {
+            head->prev = head;
+            nn->next = head;
+            head = nn;
+        }
+
     }
     node* t= head;
     for (int i = pos-1; i >= 0; i--) {
-        if (t!=NULL) {
+        if (t == NULL) {
             printf("Invalid index");
             return;
         }
         t=t->next;
     }
-    node* tt = t->next;
-    nn->prev = tt;
     nn->next = t->next;
+    nn->prev = t;
+    t->next->prev = nn;
     t->next = nn;
-    tt->prev = nn;
 }
 void del_f() {
     if (head == NULL) {
@@ -188,7 +195,7 @@ void display() {
     }
     node* t = head;
     while (t != NULL) {
-        printf("%d\t",t->data);
+        printf("%d",t->data);
         if (t->next != NULL) {
             printf("->");
         }

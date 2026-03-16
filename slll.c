@@ -115,6 +115,7 @@ void ins_n() {
     }
     nn -> next = t->next->next;
     t->next = nn;
+
 }
 void del_f() {
     if (head == NULL) {
