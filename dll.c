@@ -128,3 +128,31 @@ void ins_n() {
     t->next = nn;
     tt->prev = nn;
 }
+void del_f() {
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+    node* t =head;
+    head = head->next;
+    head->prev = NULL;
+    free(t);
+}
+void del_l() {
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+    node* t = tail;
+    tail = tail->prev;
+    tail->next = NULL;
+    free(t);
+}
+void del_n() {
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+
+
+}
