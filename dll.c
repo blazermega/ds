@@ -178,7 +178,7 @@ void del_n() {
         return;
     }
     for (int i = 0;i<pos;i++) {
-        if (t!=NULL) {
+        if (t==NULL) {
             printf("Invalid index");
             return;
         }
