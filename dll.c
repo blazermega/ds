@@ -123,12 +123,17 @@ void ins_n() {
 
     }
     node* t= head;
-    for (int i = pos-1; i >= 0; i--) {
+    for (int i = 0;i<pos-1;i++) {
         if (t == NULL) {
             printf("Invalid index");
             return;
         }
         t=t->next;
+    }
+    if (t->next == NULL) {
+        tail->next = nn;
+        nn->prev = tail;
+        tail = nn;
     }
     nn->next = t->next;
     nn->prev = t;
