@@ -221,8 +221,14 @@ void del_n() {
             return;
         }
     }
-    if (temp->next == head) {
-
+    if (temp->next->next== head) {
+        free(temp->next);
+        temp->next = head;
+    }
+    else {
+        node* t = temp->next;
+        temp->next = temp -> next->next;
+        free(t);
     }
 
 }
