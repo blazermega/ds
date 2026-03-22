@@ -18,7 +18,7 @@ int main() {
     ins_f();
     while (1) {
         int op;
-        printf("Enter\n");
+        printf("\nEnter\n");
         printf("1.Insert node at beginning\n");
         printf("2.Insert node at end\n");
         printf("3.insert node at a position\n");
@@ -72,7 +72,7 @@ void ins_f() {
         return;
     }
 
-    nn->next = head
+    nn->next = head;
     node* temp = head;
     while (temp->next != head) {
         temp = temp->next;
@@ -123,7 +123,7 @@ void ins_n() {
             return;
         }
 
-        nn->next = head
+        nn->next = head;
         node* temp = head;
         while (temp->next != head) {
             temp = temp->next;
@@ -166,6 +166,7 @@ void del_f() {
         }
         temp->next = head->next;
         free(head);
+        head = temp->next;
     }
 }
 void del_l() {
@@ -231,4 +232,27 @@ void del_n() {
         free(t);
     }
 
+}
+
+void display() {
+    if (head == NULL) {
+        printf("The list is empty\n");
+        return;
+    }
+    node* temp = head;
+    do {
+        printf("%d", temp->data);
+        if (temp->next != head) {
+            printf("->");
+        }
+        temp = temp->next;
+    }while (temp!=head);
+}
+void terminate() {
+    node* t =head;
+    do {
+        node* t2 = t;
+        t = t->next;
+        free(t2);
+    }while (t!=head);
 }
