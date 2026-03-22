@@ -211,6 +211,7 @@ void del_n() {
             }
             temp->next = head->next;
             free(head);
+            head = temp ->next;
         }
         return;
     }
@@ -249,6 +250,9 @@ void display() {
     }while (temp!=head);
 }
 void terminate() {
+    if (head == NULL) {
+        return;
+    }
     node* t =head;
     do {
         node* t2 = t;
