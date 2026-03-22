@@ -103,7 +103,7 @@ void ins_n() {
     printf("Enter the element\n");
     scanf("%d",&ele);
     if (pos<0) {
-        printf("Position out of bounds\n");
+        printf("Invalid index\n");
         return;
     }
     node* nn = malloc(sizeof(node));
@@ -120,6 +120,7 @@ void ins_n() {
             nn->next = head;
             head = nn;
         }
+        return;
 
     }
     node* t= head;
@@ -134,6 +135,7 @@ void ins_n() {
         tail->next = nn;
         nn->prev = tail;
         tail = nn;
+        return;
     }
     nn->next = t->next;
     nn->prev = t;
@@ -143,6 +145,12 @@ void ins_n() {
 void del_f() {
     if (head == NULL) {
         printf("List is empty\n");
+        return;
+    }
+
+    if (head->next == NULL) {
+        free(head);
+        head = NULL;
         return;
     }
     node* t =head;

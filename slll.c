@@ -199,6 +199,7 @@ void display() {
         }
         t = t->next;
     }
+    printf("\n");
 }
 void terminate() {
     node* t = head;
