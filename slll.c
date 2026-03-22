@@ -107,12 +107,6 @@ void ins_n() {
    }
     node* t =head;
     if (pos == 0) {
-        int ele;
-        printf("Enter the element to be inserted\n");
-        scanf("%d",&ele);
-        node* nn = malloc(sizeof(node));
-        nn->data = ele;
-        nn->next = NULL;
         if (head == NULL) {
             head = nn;
         }
@@ -148,6 +142,7 @@ void del_f() {
 void del_l() {
     if (head == NULL) {
         printf("The list is empty\n");
+        return;
     }
     node* t = head;
     while (t->next->next != NULL) {
@@ -166,14 +161,25 @@ void del_n() {
     }
     if (pos<0) {
         printf("Invalid index\n");
+        return;
     }
     node* t = head;
+    if (pos == 0) {
+        head = head ->next;
+        free(t);
+        return;
+    }
     for (int  i = 0; i < pos-1; i++) {
         if (t == NULL) {
             printf("Invalid index\n");
             return;
         }
         t = t->next;
+    }
+    if (t->next == NULL) {
+        free(t->next);
+        t->next = NULL;
+        return;
     }
     node* temp = t->next;
     t->next = t->next->next;
