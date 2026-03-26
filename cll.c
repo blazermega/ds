@@ -133,7 +133,7 @@ void ins_n() {
         return;
     }
     node* t = head;
-    for (int i=1; i<pos-1; i++) {
+    for (int i=0; i<pos-1; i++) {
         t = t->next;
         if (t ==  head) {
             printf("invalid index");
@@ -196,43 +196,25 @@ void del_n() {
         return;
     }
     if (pos == 0) {
-        if (head == NULL) {
-            printf("The list is empty\n");
-            return;
-        }
-        if (head->next == head) {
-            free(head);
-            head = NULL;
-        }
-        else {
-            node* temp = head;
-            while (temp->next != head) {
-                temp = temp->next;
-            }
-            temp->next = head->next;
-            free(head);
-            head = temp ->next;
-        }
+        del_f();
         return;
     }
     node* temp = head;
-    for (int i=1; i<pos-1; i++) {
+    for (int i=0; i<pos-1; i++) {
         temp = temp->next;
-        if (temp->next == head) {
+        if (temp == head) {
             printf("invalid index");
             return;
         }
     }
     if (temp->next->next== head) {
-        free(temp->next);
-        temp->next = head;
+        del_l();
     }
     else {
         node* t = temp->next;
         temp->next = temp -> next->next;
         free(t);
     }
-
 }
 
 void display() {

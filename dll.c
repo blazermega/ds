@@ -163,6 +163,11 @@ void del_l() {
         printf("List is empty\n");
         return;
     }
+    if (head->next == NULL) {
+        free(head);
+        head = NULL;
+        return;
+    }
     node* t = tail;
     tail = tail->prev;
     tail->next = NULL;
