@@ -17,11 +17,11 @@ int main() {
      push();
     while (1) {
         int op;
-        printf("1.push");
-        printf("2.pop");
-        printf("3.peek");
-        printf("4.display");
-        printf("5.exit");
+        printf("1.push\n");
+        printf("2.pop\n");
+        printf("3.peek\n");
+        printf("4.display\n");
+        printf("5.exit\n");
         scanf("%d",&op);
         switch (op) {
             case 1:
@@ -105,4 +105,13 @@ int isEmpty() {
         return 1;
     else
         return 0;
+}
+
+void terminate() {
+    node* t = head;
+    while (t!=NULL) {
+        node* temp = t;
+        t = t->next;
+        free(temp);
+    }
 }
