@@ -49,7 +49,7 @@ int check_infix(char str[]) {
 }
 
 char* infix_to_postfix(char str[]) {
-    char* res = malloc(sizeof(char)*(strlen(str)+1));
+    char res[strlen(str)+1];
     int i = 0;
     while (str[i] != '\0') {
         if (str[i] == '(') {
