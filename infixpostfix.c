@@ -60,6 +60,7 @@ void infix_to_postfix(char str[]) {
                 res[i] = ele;
                 ele = pop(&a);
             }
+            pop(&a);
         }
         else if (str[i] == '+' || str[i] == '-') {
             if (peek(&a) == '*' || peek(&a) == '/') {
@@ -67,7 +68,7 @@ void infix_to_postfix(char str[]) {
                 push(str[i],&a);
             }
             else {
-                res[i] = str[i];
+                push(str[i],&a);
             }
         }
         else {
