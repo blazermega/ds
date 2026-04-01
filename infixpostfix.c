@@ -2,15 +2,14 @@
 #include<stdlib.h>
 #include<string.h>
 struct node {
-    char data;
-    struct node *next;
+    char data[50];
+    int top;
 };
-typedef struct node node;
-node *head = NULL;
-void push(char ele);
-char pop();
-char peek();
-char* infix_to_postfix(char str[]);
+typedef struct node arr;
+void push(char ele,arr* a);
+char pop(arr* a);
+char peek(arr* a);
+void infix_to_postfix(char str[]);
 int check_infix(char str[]);
 int main() {
     char str[50];
@@ -20,9 +19,7 @@ int main() {
         printf("Infix expression is invalid");
         exit(1);
     }
-    char* res = infix_to_postfix(str);
-    printf("%s", res);
-    free(res);
+   infix_to_postfix(str);
 }
 int check_infix(char str[]) {
     int i = 0;
@@ -48,24 +45,26 @@ int check_infix(char str[]) {
         return 1;
 }
 
-char* infix_to_postfix(char str[]) {
+void infix_to_postfix(char str[]) {
     char res[strlen(str)+1];
     int i = 0;
+    arr a;
+    a.top = -1;
     while (str[i] != '\0') {
         if (str[i] == '(') {
-            push(str[i]);
+            push(str[i],&a);
         }
         else if (str[i] == ')') {
-            char ele = pop();
+            char ele = pop(&a);
             while (ele != '(') {
                 res[i] = ele;
-                ele = pop();
+                ele = pop(&a);
             }
         }
         else if (str[i] == '+' || str[i] == '-') {
-            if (peek() == '*' || peek() == '/') {
-                res[i] = pop();
-                push(str[i]);
+            if (peek(&a) == '*' || peek(&a) == '/') {
+                res[i] = pop(&a);
+                push(str[i],&a);
             }
             else {
                 res[i] = str[i];
@@ -77,28 +76,17 @@ char* infix_to_postfix(char str[]) {
         i++;
     }
     res[i] = '\0';
-    return res;
+    printf("%s",res);
 }
 
-void push(char ele) {
-    node* nn = malloc(sizeof(node));
-    nn->data = ele;
-    nn->next = NULL;
-    if (head == NULL) {
-        head = nn;
-    }
-    else {
-        head->next = head;
-        head = nn;
-    }
+
+void push( char ele, arr* a) {
+    a->data[++a->top] = ele;
 }
-char pop() {
-    char ele = head->data;
-    node* temp = head;
-    head = head->next;
-    free(temp);
-    return ele;
+
+char pop(arr* a) {
+    return a->data[a->top--];
 }
-char peek() {
-    return head->data;
+char peek(arr* a) {
+    return a->data[a->top];
 }
