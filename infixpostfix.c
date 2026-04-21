@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 #define max 50
 
 struct node {
     char data[max];
     int top;
-};
+}; 
 typedef struct node node;
 
 void push(node* stk, char ele);
