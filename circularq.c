@@ -50,22 +50,38 @@ int main() {
     Queue q;
     init(&q);
 
-    enqueue(&q, 10);
-    enqueue(&q, 20);
-    enqueue(&q, 30);
-    enqueue(&q, 40);
-    enqueue(&q, 50);
-    display(&q);
+    int choice, val;
 
-    enqueue(&q, 60); // Full
+    do {
+        printf("\n=== Circular Queue Menu ===\n");
+        printf("1. Enqueue\n");
+        printf("2. Dequeue\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
 
-    printf("Dequeued: %d\n", dequeue(&q));
-    printf("Dequeued: %d\n", dequeue(&q));
-    display(&q);
-
-    enqueue(&q, 60);
-    enqueue(&q, 70);
-    display(&q);
+        switch (choice) {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &val);
+                enqueue(&q, val);
+                break;
+            case 2:
+                val = dequeue(&q);
+                if (val != -1)
+                    printf("Dequeued: %d\n", val);
+                break;
+            case 3:
+                display(&q);
+                break;
+            case 4:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice\n");
+        }
+    } while (choice != 4);
 
     return 0;
 }
