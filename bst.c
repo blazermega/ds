@@ -14,6 +14,7 @@ void search(bst* root, int ele);
 bst* finsMin(bst* root);
 void inorder(bst* root);
 bst* create(int ele);
+void terminate(bst* root);
 
 int main() {
     bst* root = NULL;
@@ -46,8 +47,8 @@ int main() {
                 inorder(root);
                 break;
             case 5:
+                terminate(root);
                 exit(0);
-                break;
             default:
                 printf("Enter valid choice\n");
         }
@@ -142,4 +143,12 @@ void search(bst* root, int ele) {
         printf("element found\n");
     }
 
+}
+
+void terminate(bst* root) {
+    if (root != NULL) {
+        terminate(root->left);
+        terminate(root->right);
+        free(root);
+    }
 }
