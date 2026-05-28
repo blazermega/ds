@@ -16,7 +16,10 @@ typedef struct graph graph;
 };*/
 //typedef struct list list;
 int exist(graph **list,int data);
+void push(graph* head,graph* new);
 
+void bfs(graph** list);
+void dfs(graph** list);
 int main()
 {
     int n;
@@ -42,9 +45,21 @@ int main()
             int data;
             printf("enter the node\n");
             scanf("%d",&data);
-            if (exist(list,data))
+            int j = exist(list,data);
+            if (j != -1)
+            {
+                push(list[i], list[j]);
+            }
+            else
+            {
+                printf("node does not exist\n");
+            }
+            printf("add another node(y/n)\n");
+            scanf("%c",&op);
 
-        }
+        }while(op=='y' || op=='Y');
     }
+
+
 
 }
