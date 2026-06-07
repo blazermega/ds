@@ -59,7 +59,11 @@ int main()
 
         }while(op=='y' || op=='Y');
     }
+    bfs(list);
+    dfs(list);
+}
 
-
-
+int exist(graph **list,int data)
+{
+    
 }
