@@ -1,0 +1,41 @@
+//2. Quadratic Probing in C
+
+#include <stdio.h>
+#define SIZE 10
+int main()
+{
+    int hash[SIZE];
+    int n, key, i, index, j;
+
+    for(i = 0; i < SIZE; i++)
+        hash[i] = -1;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++)
+    {
+        printf("Enter key: ");
+        scanf("%d", &key);
+
+        index = key % SIZE;
+        j = 1;
+
+        while(hash[index] != -1)
+        {
+            index = (key % SIZE + j * j) % SIZE;
+            j++;
+        }
+
+        hash[index] = key;
+    }
+
+    printf("\nHash Table:\n");
+    for(i = 0; i < SIZE; i++)
+        printf("%d --> %d\n", i, hash[i]);
+
+    return 0;
+}
+
+
+
