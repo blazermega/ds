@@ -4,11 +4,11 @@
 #define SIZE 10
 int main()
 {
-    int hash[SIZE];
+    int hash[SIZE] = {-1};
     int n, key, i, index, j;
 
-    for(i = 0; i < SIZE; i++)
-        hash[i] = -1;
+    //for(i = 0; i < SIZE; i++)
+       // hash[i] = -1;
 
     printf("Enter number of elements: ");
     scanf("%d", &n);
@@ -18,7 +18,7 @@ int main()
         printf("Enter key: ");
         scanf("%d", &key);
 
-        index = key % SIZE;
+        index = key % SIZE  ;
         j = 1;
 
         while(hash[index] != -1)
