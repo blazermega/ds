@@ -35,11 +35,11 @@ void radixSort(int arr[], int n) {
 
 
 int main() {
-    int arr[20],n,i;
+    int arr[20],n;
     printf("Enter the NO of elements\n");
     scanf("%d",&n);
     printf("Enter the elements\n");
-    for(i=0;i<n;i++)
+    for(int i=0;i<n;i++)
         scanf("%d",&arr[i]);
     radixSort(arr, n);
     for (int i = 0; i < n; i++)
