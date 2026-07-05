@@ -3,18 +3,14 @@
 
  
 
-int main() 
-
-{ 
-
+int main() {
     int hash[SIZE];
     int n, key, i, index;
     for(i = 0; i < SIZE; i++)
         hash[i] = -1;
     printf("Enter number of elements: ");
     scanf("%d", &n);
-    for(i = 0; i < n; i++)
-    { 
+    for(i = 0; i < n; i++){
 
         printf("Enter key: ");
         scanf("%d", &key);
@@ -28,4 +24,4 @@ int main()
     for(i = 0; i < SIZE; i++) 
         printf("%d --> %d\n", i, hash[i]);
     return 0;
-} 
+}

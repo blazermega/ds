@@ -25,7 +25,7 @@ int main() {
         printf("Enter 2 to delete\n");
         printf("Enter 3 to search\n");
         printf("Enter 4 to display");
-        printf("Enter 5 to exit\n");
+        printf("Enter 5 to exit\n");    
         scanf("%d",&op);
         switch (op) {
             case 1:

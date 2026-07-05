@@ -19,7 +19,7 @@ void terminate();
 int main() {
     ins_f();
     while (1) {
-        int op;
+        int op;w    
         printf("Enter\n");
         printf("1.Insert node at beginning\n");
         printf("2.Insert node at end\n");
