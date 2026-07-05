@@ -52,8 +52,8 @@ int main() {
             default:
                 printf("Enter valid choice\n");
         }
+        }
     }
-}
 
 
 bst* ins(bst* root, int ele) {
